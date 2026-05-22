@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTrack // Student Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Header Banner -->
+        <header class="app-header">
+            <div class="logo-area">
+                <span class="logo-icon">🎓</span>
+                <h1>EduTrack</h1>
+            </div>
+            <p class="subtitle">System Dashboard</p>
+        </header>
+
+        <!-- Stats Dashboard Overview -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Students</h3>
+                <p id="stat-total">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Active Courses</h3>
+                <p id="stat-courses">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Average Age</h3>
+                <p id="stat-avg-age">0</p>
+            </div>
+        </section>
+
+        <!-- Main Content Split Layout -->
+        <main class="main-layout">
+            <!-- Left Column: Form Panel -->
+            <section class="panel form-panel">
+                <h2 id="form-title">Register New Student</h2>
+                <form id="student-form" novalidate>
+                    <input type="hidden" id="student-id">
+                    
+                    <div class="form-group">
+                        <label for="student-name">Full Name</label>
+                        <input type="text" id="student-name" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="student-age">Age</label>
+                            <input type="number" id="student-age" min="5" max="100" placeholder="20" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="student-roll">Roll Number</label>
+                            <input type="text" id="student-roll" placeholder="STU-101" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="student-email">Email Address</label>
+                        <input type="email" id="student-email" placeholder="john@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="student-course">Course Enrollment</label>
+                        <select id="student-course" required>
+                            <option value="" disabled selected>Select a course</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Information Technology">Information Technology</option>
+                            <option value="Business Administration">Business Administration</option>
+                            <option value="Data Science">Data Science</option>
+                            <option value="Digital Marketing">Digital Marketing</option>
+                        </select>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="submit-btn" class="btn btn-primary">Save Student</button>
+                        <button type="button" id="cancel-btn" class="btn btn-secondary hidden">Cancel Edit</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Right Column: Data View Panel -->
+            <section class="panel data-panel">
+                <div class="data-toolbar">
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="Search by name, roll no, or email...">
+                    </div>
+                    <div class="filter-box">
+                        <select id="filter-course">
+                            <option value="all">All Courses</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Information Technology">Information Technology</option>
+                            <option value="Business Administration">Business Administration</option>
+                            <option value="Data Science">Data Science</option>
+                            <option value="Digital Marketing">Digital Marketing</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table id="students-table">
+                        <thead>
+                            <tr>
+                                <th>Roll No.</th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Email</th>
+                                <th>Course</th>
+                                <th class="text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="students-tbody">
+                            <!-- Dynamic rows inject here -->
+                        </tbody>
+                    </table>
+                    <div id="empty-state" class="empty-state hidden">
+                        <p>No student records found matching the criteria.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
